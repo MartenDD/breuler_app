@@ -57,13 +57,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.1"
-  background_locator:
-    dependency: "direct main"
-    description:
-      name: background_locator
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.6.12"
   boolean_selector:
     dependency: transitive
     description:
@@ -71,13 +64,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
-  carp_background_location:
-    dependency: "direct main"
-    description:
-      name: carp_background_location
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.1"
   characters:
     dependency: transitive
     description:

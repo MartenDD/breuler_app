@@ -13,6 +13,24 @@ import 'package:point_in_polygon/point_in_polygon.dart';
 
 
 void main() {
+  final AudioContext audioContext = AudioContext(
+    iOS: AudioContextIOS(
+      defaultToSpeaker: true,
+      category: AVAudioSessionCategory.ambient,
+      options: [
+        AVAudioSessionOptions.defaultToSpeaker,
+        AVAudioSessionOptions.mixWithOthers,
+      ],
+    ),
+    android: AudioContextAndroid(
+      isSpeakerphoneOn: true,
+      stayAwake: true,
+      contentType: AndroidContentType.sonification,
+      usageType: AndroidUsageType.assistanceSonification,
+      audioFocus: AndroidAudioFocus.none,
+    ),
+  );
+  AudioPlayer.global.setGlobalAudioContext(audioContext);
   runApp(const MyApp());
 }
 
@@ -336,7 +354,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Polygons')),
+      appBar: AppBar(title: const Text('Breuler weist dir den Weg!')),
       //drawer: buildDrawer(context, PolygonPage.route),
       body: Padding(
         padding: const EdgeInsets.all(8),
@@ -358,7 +376,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     userAgentPackageName: 'dev.fleaflet.flutter_map.example',
                   ),
                   PolygonLayer(polygons: this.polygons),
-                  CurrentLocationLayer(),
+                  CurrentLocationLayer(centerOnLocationUpdate: CenterOnLocationUpdate.always),
                 ],
               ),
             ),
